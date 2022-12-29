@@ -27,8 +27,7 @@ public class Login {
      * @return token system user result
      */
     public Result<TokenUser> submit(String username, String password) {
-        Connection connection = SQLServerConnector.getConnection(SqlServerDatabase.DRIVER_NAME, SqlServerDatabase.DB_URL,
-                SqlServerDatabase.DB_USER_ID, SqlServerDatabase.DB_USER_PWD);
+        Connection connection = SQLServerConnector.getConnectionOfThisProject();
         PreparedStatement ps = null;
         ResultSet rs = null;
         Result<TokenUser> result = new Result<>();

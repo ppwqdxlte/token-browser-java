@@ -1,5 +1,7 @@
 package org.example.tokenbrowser.util;
 
+import org.example.tokenbrowser.config.SqlServerDatabase;
+
 import java.sql.*;
 
 public class SQLServerConnector {
@@ -11,7 +13,7 @@ public class SQLServerConnector {
      * @param dbUserPwd    eg. "root";// database user's password
      * @return object of Connection
      */
-    public static Connection getConnection(String driverName, String dburl, String dbUserID, String dbUserPwd) {
+    private static Connection getConnection(String driverName, String dburl, String dbUserID, String dbUserPwd) {
         try {
             Class.forName(driverName);
             System.out.println("Success to load driver!!!");
@@ -28,6 +30,11 @@ public class SQLServerConnector {
             System.out.println("Failed connection...");
         }
         return dbcon;
+    }
+
+    public static Connection getConnectionOfThisProject(){
+        return getConnection(SqlServerDatabase.DRIVER_NAME,SqlServerDatabase.DB_URL,
+                SqlServerDatabase.DB_USER_ID,SqlServerDatabase.DB_USER_PWD);
     }
 
     public static void closeConnection(Connection connection) {

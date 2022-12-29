@@ -42,8 +42,7 @@ public class Management {
             result.setMsg("The new password is incorrect,please re-enter!");
             return result;
         }
-        Connection connection = SQLServerConnector.getConnection(SqlServerDatabase.DRIVER_NAME, SqlServerDatabase.DB_URL,
-                SqlServerDatabase.DB_USER_ID, SqlServerDatabase.DB_USER_PWD);
+        Connection connection = SQLServerConnector.getConnectionOfThisProject();
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
